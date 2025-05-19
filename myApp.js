@@ -1,5 +1,13 @@
-require('dotenv').config();
+require('dotenv').config(); // Load environment variables
+const mongoose = require('mongoose');
 
+// Retrieve the MongoDB URI from the .env file
+const uri = process.env.MONGO_URI;
+
+// Connect to MongoDB
+mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log('Connected to MongoDB successfully'))
+  .catch(err => console.error('MongoDB connection error:', err));
 
 let Person;
 
